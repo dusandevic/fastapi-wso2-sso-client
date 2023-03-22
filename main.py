@@ -32,9 +32,13 @@ def login():
 
 @app.get("/oauth2/callback")
 def oauth2Callback(request: Request):
-    token_response = session.fetch_access_token(token_endpoint, authorization_response=request.query_params)
-    jwtToken = token_response["access_token"]
-    return validateToken(jwtToken)
+    try:
+        queryParams = request.query_params
+        token_response = session.fetch_token(url=token_endpoint, grant_type='authorization_code', code=queryParams["code"])
+        jwtToken = token_response["id_token"]
+        return validateToken(jwtToken)
+    except Exception as e:
+        return {"message": str(e), "error": True}
 
 
 def validateToken(jwtToken: string):
