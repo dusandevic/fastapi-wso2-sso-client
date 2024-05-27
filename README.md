@@ -1,3 +1,6 @@
+![Alt](https://repobeats.axiom.co/api/embed/8d62b78163228ce691d879a6a3c9cd2209ae69d4.svg "Repobeats analytics image")
+
+
 # FastAPI OAuth2 Client 
 
 ### WSO2 Identity Server compatible
